@@ -3,11 +3,10 @@ An skeleton web project for frontend developer. It uses SASS, Gulp, and Browseri
 
 ##Getting Started
 1. Clone this repo from `https://github.com/tanUIT/generators-web-project.git` by command
-```
-$ git clone https://github.com/tanUIT/generators-web-project.git
-```
 2. Run `npm install` from the root directory
 ```
+$ git clone https://github.com/tanUIT/generators-web-project.git
+
 $ npm install
 ```
 
