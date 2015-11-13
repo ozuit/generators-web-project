@@ -1,4 +1,9 @@
 # generators-web-project
+
+##Download
+```
+git clone https://github.com/tanUIT/generators-web-project.git
+```
 ##Installation
 ```
 npm install
