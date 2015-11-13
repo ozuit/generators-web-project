@@ -1,4 +1,11 @@
 {
+  "name": "generators-web-project",
+  "version": "1.0.0",
+  "main": "gulpfile.babel.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tanUIT/generators-web-project.git"
+  },
   "private": true,
   "engines": {
     "node": ">=0.12.0"
