@@ -33,7 +33,7 @@ gulp.task('scripts', () => {
 });
 
 gulp.task('html', ['styles', 'scripts'], () => {
-  const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
+  const assets = $.useref.assets({searchPath: ['app', '.']});
 
   return gulp.src('app/*.html')
     .pipe(assets)
@@ -55,10 +55,7 @@ gulp.task('images', () => {
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(require('main-bower-files')({
-    filter: '**/*.{eot,svg,ttf,woff,woff2}'
-  }).concat('app/fonts/**/*'))
-    .pipe(gulp.dest('.tmp/fonts'))
+  return gulp.src('app/fonts/*')
     .pipe(gulp.dest('dist/fonts'));
 });
 
@@ -71,14 +68,14 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+gulp.task('clean', del.bind(null, ['dist']));
 
-gulp.task('serve', ['styles', 'fonts'], () => {
+gulp.task('serve', () => {
   browserSync({
     notify: false,
     port: 9000,
     server: {
-      baseDir: ['.tmp', 'app']
+      baseDir: ['app']
     }
   });
 
@@ -87,7 +84,6 @@ gulp.task('serve', ['styles', 'fonts'], () => {
     'app/scripts/**/*.js',
     'app/styles/**/*.css',
     'app/images/**/*',
-    '.tmp/fonts/**/*'
   ]).on('change', reload);
 
   gulp.watch('app/fonts/**/*', ['fonts']);
@@ -104,13 +100,9 @@ gulp.task('serve:dist', () => {
   });
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['html', 'images', 'fonts', 'minify-css', 'minify-js', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
-
-gulp.task('compress', ['minify-css', 'minify-js'], () => {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
-})
 
 gulp.task('default', ['clean'], () => {
   gulp.start('build');

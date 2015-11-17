@@ -15,11 +15,7 @@ $ npm install
 ```
 $ gulp serve
 ```
-- To build project as production use `gulp` command. An dist directory will be created, it contain all js, css, html and images file.
+- To build project as production use `gulp` command. An dist directory will be created, it contain all js, css, html and images file optimized.
 ```
 $ gulp
-```
-- To minify css, js, images use `gulp compress` command. your products will be optimized includes images, css, js file than the original.
-```
-$ gulp compress
 ```
