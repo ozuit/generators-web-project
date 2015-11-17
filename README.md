@@ -11,7 +11,7 @@ $ npm install
 ```
 
 ##Usage
-- To run project with browser-sync use `gulp serve` command (may require installing Gulp globally npm install gulp -g). Your browser will automatically be opened and directed to the browser-sync proxy address. Now that gulp serve is running, any changes in the /app directory will be automatically processed by Gulp and the changes will be injected to any open browsers pointed at the proxy address.
+- To run project with browser-sync use `gulp serve` command (may require installing Gulp globally `npm install gulp -g`). Your browser will automatically be opened and directed to the browser-sync proxy address. Now that gulp serve is running, any changes in the /app directory will be automatically processed by Gulp and the changes will be injected to any open browsers pointed at the proxy address.
 ```
 $ gulp serve
 ```
