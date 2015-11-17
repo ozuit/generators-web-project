@@ -11,31 +11,20 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 gulp.task('minify-css', () => {
-  return gulp.src('.tmp/styles/*.css')
+  return gulp.src('app/styles/*.css')
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('dist/styles_min'));
+});
+
+gulp.task('styles', () => {
+  return gulp.src('app/styles/*.css')
+    .pipe(gulp.dest('dist/styles'))
 });
 
 gulp.task('minify-js', () => {
   return gulp.src('app/scripts/*.js')
     .pipe(minifyJs())
     .pipe(gulp.dest('dist/scripts_min'));
-});
-
-gulp.task('styles', () => {
-  return gulp.src('app/styles/*.scss')
-    .pipe($.plumber())
-    .pipe($.sourcemaps.init())
-    .pipe($.sass.sync({
-      outputStyle: 'expanded',
-      precision: 10,
-      includePaths: ['.']
-    }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['last 1 version']}))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
-    .pipe(gulp.dest('dist/styles'))
-    .pipe(reload({stream: true}));
 });
 
 gulp.task('scripts', () => {
@@ -49,7 +38,7 @@ gulp.task('html', ['styles', 'scripts'], () => {
   return gulp.src('app/*.html')
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.scss', $.minifyCss({compatibility: '*'})))
+    .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe(gulp.dest('dist'));
@@ -89,21 +78,18 @@ gulp.task('serve', ['styles', 'fonts'], () => {
     notify: false,
     port: 9000,
     server: {
-      baseDir: ['.tmp', 'app'],
-      routes: {
-        '/bower_components': 'bower_components'
-      }
+      baseDir: ['.tmp', 'app']
     }
   });
 
   gulp.watch([
     'app/*.html',
     'app/scripts/**/*.js',
+    'app/styles/**/*.css',
     'app/images/**/*',
     '.tmp/fonts/**/*'
   ]).on('change', reload);
 
-  gulp.watch('app/styles/**/*.scss', ['styles']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
