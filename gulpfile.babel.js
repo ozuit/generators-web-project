@@ -6,19 +6,27 @@ import minifyCss from 'gulp-minify-css';
 import minifyJs from 'gulp-uglify';
 import imagemin from 'gulp-imagemin';
 import pngquant from 'imagemin-pngquant';
+import sass from 'gulp-sass';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 gulp.task('minify-css', () => {
-  return gulp.src('app/styles/*.css')
+  return gulp.src('.tmp/styles/*.css')
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('dist/styles_min'));
 });
 
-gulp.task('styles', () => {
-  return gulp.src('app/styles/*.css')
-    .pipe(gulp.dest('dist/styles'))
+gulp.task('style', function () {
+  gulp.src('app/styles/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('.tmp/styles'));
+});
+
+gulp.task('styles-dist', function () {
+  gulp.src('app/styles/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('minify-js', () => {
@@ -32,7 +40,7 @@ gulp.task('scripts', () => {
     .pipe(gulp.dest('dist/scripts'))
 });
 
-gulp.task('html', ['styles', 'scripts'], () => {
+gulp.task('html', ['styles-dist', 'scripts'], () => {
   const assets = $.useref.assets({searchPath: ['app', '.']});
 
   return gulp.src('app/*.html')
@@ -70,24 +78,24 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['dist']));
 
-gulp.task('serve', () => {
+gulp.task('serve', ['style'], () => {
   browserSync({
+    open: false,
     notify: false,
     port: 9000,
     server: {
-      baseDir: ['app']
+      baseDir: ['.tmp', 'app']
     }
   });
 
   gulp.watch([
     'app/*.html',
     'app/scripts/**/*.js',
-    'app/styles/**/*.css',
     'app/images/**/*',
+    'app/fonts/**/*',
   ]).on('change', reload);
 
-  gulp.watch('app/fonts/**/*', ['fonts']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
+  gulp.watch('app/styles/**/*.scss', ['style', reload]);
 });
 
 gulp.task('serve:dist', () => {

@@ -1,0 +1,120 @@
+/*
+ * jQuery Nivo Slider v2.4
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2011, Gilbert Pellegrom
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * March 2010
+ */
+/* The Nivo Slider styles */
+#slider {
+  position: relative; }
+
+.nivoSlider {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: url(../images/loading.gif) no-repeat 50% 50%; }
+
+.nivoSlider img {
+  position: absolute;
+  top: 0px;
+  display: none;
+  left: 0px;
+  min-height: 100% !important; }
+
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 60;
+  display: none; }
+
+/* The slices in the Slider */
+.nivo-slice {
+  display: block;
+  position: absolute;
+  z-index: 50;
+  height: 100%;
+  overflow: hidden; }
+
+/* Caption styles */
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav a {
+  position: relative;
+  z-index: 99;
+  cursor: pointer; }
+
+.nivo-controlNav a.active {
+  font-weight: bold; }
+
+.nivo-controlNav {
+  position: absolute;
+  left: 360px;
+  bottom: 15px;
+  display: none;
+  text-align: center;
+  z-index: 9999;
+  height: 11px;
+  padding: 5px 0;
+  overflow: hidden;
+  width: 300px; }
+
+.nivo-controlNav a {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background: url(../images/bullets.png) no-repeat;
+  text-indent: 9999px;
+  border: 0;
+  margin: 0 3px; }
+
+.nivo-controlNav a.active {
+  background-position: 0 -11px; }
+
+.nivo-caption {
+  text-shadow: none;
+  font-size: 14px;
+  display: block;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 0;
+  width: 900px;
+  padding: 10px 15px; }
+
+.nivo-caption a {
+  color: #efe9d1;
+  text-decoration: underline; }
+
+/* Direction nav styles (e.g. Next & Prev) */
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+  display: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 99;
+  top: 45%;
+  background: url(../images/arrows.png) no-repeat right center;
+  text-indent: -9999px;
+  cursor: pointer;
+  border: 0; }
+
+#slider:hover .nivo-directionNav a {
+  display: block; }
+
+a.nivo-nextNav {
+  right: 10px; }
+
+a.nivo-prevNav {
+  left: 10px;
+  background-position: left center; }
