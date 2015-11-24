@@ -1,5 +1,5 @@
 {
-  "name": "gulp-project-web",
+  "name": "generators-web-project",
   "private": true,
   "dependencies": {
     "bootstrap-sass": "~3.3.5"

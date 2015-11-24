@@ -2,12 +2,15 @@
 An skeleton web project for frontend developer. It uses SASS, Gulp, and Browserify and utilizes best Frontend practices and Gulp best practices from [this resource](https://github.com/greypants/gulp-starter).
 
 ##Getting Started
-1. Clone this repo from `https://github.com/tanUIT/generators-web-project.git`
-2. Run `npm install` from the root directory
+1. Clone this repo from `https://github.com/tanUIT/generators-web-project.git`.
+2. Run `npm install` from the root directory.
+3. Finally run `bower install`.
 ```
 $ git clone https://github.com/tanUIT/generators-web-project.git
 
 $ npm install
+
+$ bower install
 ```
 
 ##Usage
