@@ -12,32 +12,24 @@ This is an skeleton web project for frontend developer. We used SASS, Gulp, and 
 
 ### Prerequisites
 
-- You need to install [Node JS](https://nodejs.org/en/download/) before run this project
-- You also need to install Gulp and Bower globally
-
-```bash
-npm install gulp -g
-npm install bower -g
-```
+- You need to install [Docker](https://www.docker.com/get-started) before running this application.
 
 ### Installing
 
 - Clone this repo from **[https://github.com/ozuit/generators-web-project.git](https://github.com/ozuit/generators-web-project.git)**
-- Run **npm install** from the root directory to install dependencies
-- Finally run **bower install**
 
 ### Usage
 
 - Run project with browser-sync. Your browser will automatically be opened and directed to the browser-sync proxy address. Now that gulp serve is running, any changes in the /app directory will be automatically processed by Gulp and the changes will be injected to any open browsers pointed at the proxy address.
 
 ```bash
-gulp serve
+docker-compose up
 ```
 
-- Build on production. An **dist** directory will be created, it contain all js, css, html and images file optimized.
+- Build on production. An **source/dist** directory will be created, it contain all js, css, html and images file optimized.
 
 ```bash
-gulp
+docker-compose run web gulp
 ```
 
 ## Document
