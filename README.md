@@ -13,10 +13,11 @@ This is an skeleton web project for frontend developer. We used SASS, Gulp, and 
 ### Prerequisites
 
 - You need to install [Node JS](https://nodejs.org/en/download/) before run this project
-- You also need to install Gulp globally
+- You also need to install Gulp and Bower globally
 
 ```bash
 npm install gulp -g
+npm install bower -g
 ```
 
 ### Installing
