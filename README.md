@@ -43,4 +43,4 @@ Get more information at [wiki](https://github.com/ozuit/generators-web-project/w
 
 ## Authors
 
-- Tan Tong - *VNG Employee*
+- Tan Tong
